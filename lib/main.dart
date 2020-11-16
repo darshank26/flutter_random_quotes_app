@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Random Quotes App',
       home: MyHomePage(title: 'Random Quotes App'),
     );
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
 
     return Scaffold(
+
       backgroundColor: Colors.black26,
         // appBar: AppBar(
         //   title: Center(child: Text(widget.title)),
@@ -93,8 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
                              ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(2.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Center(child: Text(snapshot.data['content'].toString().toUpperCase(),textAlign: TextAlign.center,style: TextStyle(letterSpacing: 0.8,fontSize: 25.0,color: Colors.white,fontWeight: FontWeight.bold),)),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom:50.0),
+                                child: Center(child: Text("-"+snapshot.data['author'].toString().toUpperCase(),textAlign: TextAlign.right,style: TextStyle(letterSpacing: 0.8,fontSize: 18.0,color: Colors.white,fontWeight: FontWeight.bold),)),
+                              ),
+                            ],
                           ),
                         ],),
                     );
